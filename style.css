@@ -1,0 +1,200 @@
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* --- CSS Variables for Easy Theme Management --- */
+:root {
+    --primary-color: #4a90e2; /* A softer, modern blue */
+    --primary-hover-color: #357ABD;
+    --secondary-color: #f4f7f6; /* Light gray for backgrounds */
+    --text-color: #333;
+    --text-secondary-color: #777;
+    --border-color: #e0e0e0;
+    --success-color: #50e3c2; /* Teal for success */
+    --danger-color: #e35050;
+    --info-color: #4a6ee2;
+    --card-bg: #ffffff;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- General Body & Reset Styles --- */
+body {
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Main App & Auth Container --- */
+.container {
+    margin-top: 4rem;
+}
+
+/* --- Card Styling --- */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    background-color: var(--card-bg);
+    overflow: hidden; /* Ensures child elements respect border-radius */
+}
+
+.card-header {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* --- Form & Input Styling --- */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* --- Button Styling --- */
+.btn {
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+    transform: translateY(-2px);
+}
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+}
+
+/* --- Task List --- */
+#tasks li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+#tasks li:last-child {
+    border-bottom: none;
+}
+#tasks li:hover {
+    background-color: #fafafa;
+}
+
+/* --- Task Text & Completed State --- */
+.task-text {
+    font-size: 1rem;
+}
+.task-completed {
+    background-color: #f8f9fa;
+}
+.task-completed .task-text {
+    text-decoration: line-through;
+    color: var(--text-secondary-color);
+    opacity: 0.7;
+}
+
+/* --- Task Action Buttons --- */
+.task-actions, .edit-actions {
+    display: flex;
+    align-items: center;
+}
+.task-actions .btn {
+    opacity: 0; /* Hidden by default */
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 1rem;
+}
+#tasks li:hover .task-actions .btn {
+    opacity: 1; /* Visible on hover */
+    transform: scale(1);
+}
+.complete-btn { background-color: var(--success-color); border-color: var(--success-color); color: white; }
+.edit-btn { background-color: var(--info-color); border-color: var(--info-color); color: white; }
+.delete-btn { background-color: var(--danger-color); border-color: var(--danger-color); color: white; }
+
+/* --- Edit Mode --- */
+.edit-input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+.save-btn, .cancel-btn {
+    padding: 0.5rem 1rem;
+}
+
+/* --- Authentication Page Styles --- */
+.auth-container {
+    max-width: 420px;
+}
+.auth-card {
+    padding: 2.5rem;
+}
+.auth-card .card-title {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Landing Page Specific Styles --- */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #357ABD);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+.features {
+    padding: 60px 0;
+}
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+.navbar .btn {
+    margin-left: 10px;
+}
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}

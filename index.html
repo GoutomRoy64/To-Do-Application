@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your To-Do Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">To-Do Application</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Updated Buttons -->
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Added #register to the href -->
+                        <a class="btn btn-primary" href="login.html#register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Organize Your Life, One Task at a Time</h1>
+            <p>A simple, clean, and powerful to-do list application to help you stay on track.</p>
+            <a href="login.html#register" class="btn btn-light btn-lg">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-icon mb-3">✓</div>
+                    <h3>Easy to Use</h3>
+                    <p>A clean and intuitive interface makes managing your tasks a breeze.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon mb-3">👥</div>
+                    <h3>User Accounts</h3>
+                    <p>Register for an account to keep your to-do lists private and secure.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon mb-3">📱</div>
+                    <h3>Always Accessible</h3>
+                    <p>Access your tasks from any device with a web browser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-light">
+        <div class="container">
+            <!-- Updated Footer Content -->
+            <p class="mb-0">
+                Contact: <a href="mailto:goutom.roy0364@gmail.com">goutom.roy0364@gmail.com</a> |
+                Portfolio: <a href="https://goutomroy64.github.io/Portfolio_V1" target="_blank">goutomroy64.github.io</a>
+            </p>
+            <p class="text-muted mt-1">&copy; 2025 To-Do Application. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS for toggler -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
