@@ -23,8 +23,6 @@ A complete and feature-rich to-do list application built with PHP, MySQL, and mo
 
 ## Screenshots
 
-*You can add screenshots here to showcase your application. Replace the placeholder links.*
-
 | Landing Page | Login/Register | Main Application |
 | :---: | :---: | :---: |
 | ![Landing Page](image/landing_page.webp) | ![Login Page](image/register.webp) | ![App Page](image/main_app.webp) |
