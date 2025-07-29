@@ -2,6 +2,10 @@
 
 A complete and feature-rich to-do list application built with PHP, MySQL, and modern frontend technologies. This project allows users to register, log in, and manage their personal tasks in a clean and intuitive interface.
 
+## Live Demo
+
+[To-do.page.gd]
+
 ## Features
 
 - **User Authentication:** Secure registration and login system for individual user accounts.
@@ -68,6 +72,7 @@ To run this project on your local machine, follow these steps:
 
    ```sql
    -- Create the 'users' table
+   -- Email is the unique identifier, username can be duplicated.
    CREATE TABLE `users` (
      `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
      `username` varchar(50) NOT NULL,
@@ -75,7 +80,6 @@ To run this project on your local machine, follow these steps:
      `password` varchar(255) NOT NULL,
      `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
      PRIMARY KEY (`id`),
-     UNIQUE KEY `username` (`username`),
      UNIQUE KEY `email` (`email`)
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -15,9 +15,10 @@
             <div class="card-body">
                 <h3 class="card-title text-center">Login</h3>
                 <form id="login-form">
+                    <!-- --- UPDATED: Changed from username to email --- -->
                     <div class="mb-3">
-                        <label for="login-username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="login-username" required>
+                        <label for="login-email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="login-email" required>
                     </div>
                     <div class="mb-3">
                         <label for="login-password" class="form-label">Password</label>
@@ -26,7 +27,7 @@
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="#" id="show-register">Register here</a>
+                    Don't have an account? <a href="login.html#register" id="show-register">Register here</a>
                 </p>
             </div>
         </div>
@@ -40,7 +41,6 @@
                         <label for="register-username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="register-username" required>
                     </div>
-                    <!-- New Email Field -->
                     <div class="mb-3">
                         <label for="register-email" class="form-label">Email Address</label>
                         <input type="email" class="form-control" id="register-email" required>

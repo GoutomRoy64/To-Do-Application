@@ -23,13 +23,11 @@ switch ($action) {
 
 function handle_register($conn) {
     $response = ['status' => 'error', 'message' => 'Invalid registration data.'];
-    // Check for the new email field
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
         $username = trim($_POST['username']);
         $password = $_POST['password'];
-        $email = trim($_POST['email']); // Get the email
+        $email = trim($_POST['email']);
 
-        // Add validation for email
         if (empty($username) || empty($password) || empty($email)) {
             $response['message'] = 'Username, email, and password cannot be empty.';
         } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -37,16 +35,13 @@ function handle_register($conn) {
         } else {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             try {
-                // Check if username OR email already exists
-                $stmt = $conn->prepare("SELECT id FROM users WHERE username = :username OR email = :email");
-                $stmt->bindParam(':username', $username);
+                $stmt = $conn->prepare("SELECT id FROM users WHERE  email = :email");
                 $stmt->bindParam(':email', $email);
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    $response['message'] = 'Username or email is already taken.';
+                    $response['message'] = 'This email address is already registered.';
                 } else {
-                    // Update the INSERT statement to include email
                     $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
                     $stmt->bindParam(':username', $username);
                     $stmt->bindParam(':email', $email);
@@ -68,13 +63,15 @@ function handle_register($conn) {
 
 function handle_login($conn) {
     $response = ['status' => 'error', 'message' => 'Invalid login data.'];
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = trim($_POST['username']);
+    // --- UPDATED: Check for email instead of username ---
+    if (isset($_POST['email']) && isset($_POST['password'])) {
+        $email = trim($_POST['email']);
         $password = $_POST['password'];
 
         try {
-            $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = :username");
-            $stmt->bindParam(':username', $username);
+            // --- UPDATED: Query by email ---
+            $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE email = :email");
+            $stmt->bindParam(':email', $email);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
@@ -82,13 +79,14 @@ function handle_login($conn) {
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['loggedin'] = true;
                     $_SESSION['user_id'] = $user['id'];
+                    // We still save the username to the session to greet the user in the app
                     $_SESSION['username'] = $user['username'];
                     $response = ['status' => 'success', 'message' => 'Login successful.'];
                 } else {
-                    $response['message'] = 'Invalid username or password.';
+                    $response['message'] = 'Invalid email or password.';
                 }
             } else {
-                $response['message'] = 'Invalid username or password.';
+                $response['message'] = 'Invalid email or password.';
             }
         } catch (PDOException $e) {
             $response['message'] = 'Database error: ' . $e->getMessage();

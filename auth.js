@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const showLoginLink = document.getElementById('show-login');
     const messageArea = document.getElementById('message-area');
 
-    // --- Function to switch between forms ---
     const showRegisterForm = () => {
         loginCard.style.display = 'none';
         registerCard.style.display = 'block';
@@ -20,12 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         messageArea.innerHTML = '';
     };
 
-    // --- Check URL hash on page load ---
     if (window.location.hash === '#register') {
         showRegisterForm();
     }
 
-    // --- Toggle between Login and Register forms on click ---
     showRegisterLink.addEventListener('click', (e) => {
         e.preventDefault();
         showRegisterForm();
@@ -36,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showLoginForm();
     });
     
-    // --- Display messages to the user ---
     const showMessage = (message, type = 'danger') => {
         messageArea.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
     };
@@ -44,12 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Handle Login Form Submission ---
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const username = document.getElementById('login-username').value;
+        // --- UPDATED: Get email from the form ---
+        const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
         
         const formData = new FormData();
         formData.append('action', 'login');
-        formData.append('username', username);
+        // --- UPDATED: Send email instead of username ---
+        formData.append('email', email);
         formData.append('password', password);
 
         try {
